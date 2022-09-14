@@ -14,10 +14,10 @@
                 <xpath expr="//form[1]/header[1]/button[@name='291']" position="replace">    
                     <button name="%(sale.action_view_sale_advance_payment_inv)d" string="Create Invoice"
                         type="action" class="btn-primary" data-hotkey="q"
-                        attrs="{'invisible': [('invoice_status', '!=', 'to invoice'), ('nothing_toinvoice', '=', True)]}"/>
+                        attrs="{'invisible': [('invoice_status', '!=', 'to invoice')]}"/>
                     <button name="%(sale.action_view_sale_advance_payment_inv)d" string="Create Invoice"
                         type="action" context="{'default_advance_payment_method': 'percentage'}" data-hotkey="q"
-                        attrs="{'invisible': ['|',('invoice_status', '!=', 'no'), ('state', '!=', 'sale')]}"/>
+                        attrs="{'invisible': ['|',('invoice_status', '=', 'no'), ('state', '!=', 'sale')]}"/>
                 </xpath>
             </data>
         </field>
