@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="nothing_toinvoice" model="ir.ui.view">
+        <field name="name">nothing.toinvoice</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name ="nothing_toinvoice"/>
+                </xpath>
+            </data>
+            <data>
+                <xpath expr="//form[1]/header[1]/button[@name='291']" position="replace">    
+                    <button name="%(sale.action_view_sale_advance_payment_inv)d" string="Create Invoice"
+                        type="action" class="btn-primary" data-hotkey="q"
+                        attrs="{'invisible': [('invoice_status', '!=', 'to invoice'), ('nothing_toinvoice', '=', True)]}"/>
+                    <button name="%(sale.action_view_sale_advance_payment_inv)d" string="Create Invoice"
+                        type="action" context="{'default_advance_payment_method': 'percentage'}" data-hotkey="q"
+                        attrs="{'invisible': ['|',('invoice_status', '!=', 'no'), ('state', '!=', 'sale')]}"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+</odoo>
