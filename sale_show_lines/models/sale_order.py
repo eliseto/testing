@@ -15,7 +15,7 @@ class SaleOrder(models.Model):
         ('upselling', 'Upselling Opportunity'),
         ('invoiced', 'Fully Invoiced'),
         ('to invoice', 'To Invoice'),
-        ('not apply invoice', 'No aplica factura')
+        ('not apply invoice', 'No aplica factura'),
         ('no', 'Nothing to Invoice')
         ], string='Invoice Status', compute='_get_invoice_status', store=True)
     nothing_invoice = fields.Boolean(string="no facturar", default=False)
