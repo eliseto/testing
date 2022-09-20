@@ -10,7 +10,7 @@
                 <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="before">
                     <field name="show_line"/>
                 </xpath>
-                <xpath expr="//form//header/button[@name='action_confirm][@id='action_confirm']" position="replace">
+                <xpath expr="//form[1]//header[1]/button[@name='action_confirm][@id='action_confirm']" position="replace">
                     <button name="action_confirm" id="action_confirm" data-hotkey="v" string="Confirm" class="btn-primary" type="object" attrs="{'invisible': [('state', 'not in', ['sent'])]}" />
                 </xpath>
             </field>
