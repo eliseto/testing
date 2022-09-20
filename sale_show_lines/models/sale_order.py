@@ -18,7 +18,7 @@ class SaleOrder(models.Model):
         ('notinvoice', 'No aplica factura'),
         ('no', 'Nothing to Invoice')
         ], string='Invoice Status', compute='_get_invoice_status', store=True)
-    nothing_invoice = fields.Boolean(string="No Facturar", default=False, compute= 'compute_fields_nothing')
+    nothing_invoice = fields.Boolean(string="No Facturar", default=False, store=True, compute= 'compute_fields_nothing')
 
     @api.depends('nothing_invoice')
     def compute_fields_nothing(self):
