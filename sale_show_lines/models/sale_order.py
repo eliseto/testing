@@ -18,10 +18,19 @@ class SaleOrder(models.Model):
         ('notinvoice', 'No aplica factura'),
         ('no', 'Nothing to Invoice')
         ], string='Invoice Status', compute='_get_invoice_status', store=True)
-    nothing_invoice = fields.Boolean(string="no facturar", default=False)
-    def action_confirm(self):
-        super().action_confirm()
-        if self.nothing_invoice:
-            self.write ({'invoice_status':'notinvoice'})
-        else:
-            pass
+    nothing_invoice = fields.Boolean(string="No Facturar", default=False, compute= 'compute_fields_nothing')
+
+    @api.depends('nothing_invoice')
+    def compute_fields_nothing(self):
+        for rec in self:
+            if rec.nothing_invoice:
+                rec.invoice_status =('notinvoice')
+            else:
+                pass
+
+    #def action_confirm(self):
+    #    super().action_confirm()
+    #    if self.nothing_invoice:
+    #        self.write ({'invoice_status':'notinvoice'})
+    #    else:
+    #        pass
