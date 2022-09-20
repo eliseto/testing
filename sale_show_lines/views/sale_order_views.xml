@@ -1,20 +1,19 @@
 <?xml version="1.0"?>
 <odoo>
-    <data>
-
         <record id="view_sale_order_block_lines_inherit" model="ir.ui.view">
             <field name="name">view.sale.order.block.lines.inherit</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
+                <xpath expr="//sheet/group[@name='sale_header']/group[@name='partner_details']/field[@name='partner_id']" position="after">
+                    <field name="nothing_invoice" string="no facturar"/>
+                </xpath>
                 <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="before">
                     <field name="show_line"/>
                 </xpath>
-                <xpath expr="//form[1]//header[1]/button[@name='action_confirm][@id='action_confirm']" position="replace">
-                    <button name="action_confirm" id="action_confirm" data-hotkey="v" string="Confirm" class="btn-primary" type="object" attrs="{'invisible': [('state', 'not in', ['sent'])]}" />
-                </xpath>
+                <!--xpath expr="//button[@name='action_confirm][@id='action_confirm']" position="replace">
+                    <button name="action_confirm" id="action_confirm" string="Confirm" class="btn-primary" type="object" attrs="{'invisible': [('state', 'not in', ['sent'])]}" />
+                </xpath-->
             </field>
-        </record>
-
-    </data>
+        </record>  
 </odoo>
