@@ -6,7 +6,7 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//sheet/group[@name='sale_header']/group[@name='partner_details']/field[@name='partner_id']" position="after">
-                    <field name="nothing_invoice" string="no facturar" attrs="{'readonly':('state','=','sale')]}"/>
+                    <field name="nothing_invoice" string="no facturar" attrs="{'readonly':[('state','=','sale')]}"/>
                 </xpath>
                 <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="before">
                     <field name="show_line"/>
