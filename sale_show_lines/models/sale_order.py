@@ -23,3 +23,5 @@ class SaleOrder(models.Model):
         super().action_confirm()
         if self.nothing_invoice:
             self.write ({'invoice_status':'notinvoice'})
+        else:
+            pass
