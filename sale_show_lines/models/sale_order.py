@@ -15,11 +15,11 @@ class SaleOrder(models.Model):
         ('upselling', 'Upselling Opportunity'),
         ('invoiced', 'Fully Invoiced'),
         ('to invoice', 'To Invoice'),
-        ('not apply invoice', 'No aplica factura'),
+        ('notinvoice', 'No aplica factura'),
         ('no', 'Nothing to Invoice')
         ], string='Invoice Status', compute='_get_invoice_status', store=True)
     nothing_invoice = fields.Boolean(string="no facturar", default=False)
     def action_confirm(self):
         super().action_confirm()
         if self.nothing_invoice:
-            return {'invoice_status':'not apply invoice'}
+            self.write ({'invoice_status':'notinvoice'})
