@@ -60,22 +60,7 @@ class SaleOrder(models.Model):
                 order.invoice_status = 'upselling'
             else:
                 order.invoice_status = 'no'
-                
+
         for rec in self:
             if rec.nothing_invoice:
                 rec.invoice_status = 'notinvoice'
-
-    #@api.depends('nothing_invoice')
-    #def compute_fields_nothing(self):
-    #    for rec in self:
-    #        if rec.nothing_invoice:
-    #            rec.invoice_status =('notinvoice')
-    #        else:
-    #            pass
-
-    #def action_confirm(self):
-    #    super().action_confirm()
-    #    if self.nothing_invoice:
-    #        self.write ({'invoice_status':'notinvoice'})
-    #    else:
-    #        pass
