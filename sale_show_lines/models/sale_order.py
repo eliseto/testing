@@ -47,8 +47,6 @@ class SaleOrder(models.Model):
                 ],
                 ['order_id', 'invoice_status'],
                 ['order_id', 'invoice_status'], lazy=False)]
-        if self.nothing_invoice:
-            self.invoice_status = 'notinvoice'
 
         for order in confirmed_orders:
             line_invoice_status = [d[1] for d in line_invoice_status_all if d[0] == order.id]
@@ -62,6 +60,10 @@ class SaleOrder(models.Model):
                 order.invoice_status = 'upselling'
             else:
                 order.invoice_status = 'no'
+                
+        for rec in self:
+            if rec.nothing_invoice:
+                rec.invoice_status = 'notinvoice'
 
     #@api.depends('nothing_invoice')
     #def compute_fields_nothing(self):
