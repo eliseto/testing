@@ -48,7 +48,7 @@ class SaleOrder(models.Model):
                 ['order_id', 'invoice_status'],
                 ['order_id', 'invoice_status'], lazy=False)]
         if self.nothing_invoice:
-            order.invoice_status = 'notinvoice'
+            self.invoice_status = 'notinvoice'
 
         for order in confirmed_orders:
             line_invoice_status = [d[1] for d in line_invoice_status_all if d[0] == order.id]
