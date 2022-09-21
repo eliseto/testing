@@ -63,6 +63,5 @@ class SaleOrder(models.Model):
 
         for rec in self:
             if rec.nothing_invoice:
-                if rec.state not in ('sale', 'done'):
-                    rec.invoice_status = 'notinvoice'
+                rec.invoice_status = 'notinvoice'
             
